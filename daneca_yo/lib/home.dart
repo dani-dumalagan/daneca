@@ -1,5 +1,46 @@
 import 'package:flutter/material.dart';
-import 'collapsing.dart';
+
+class HeaderCanteen extends StatelessWidget { // ------> for CANTEEN HEADERS
+  final String canteenImage;
+  final String canteenName;
+
+  HeaderCanteen({this.canteenImage, this.canteenName});
+
+  @override
+  Widget build(BuildContext context) {
+    return new SliverAppBar(
+              pinned: true,
+              // shape: new RoundedRectangleBorder(
+              //    borderRadius: new BorderRadius.circular(20.0)
+              // ),
+              expandedHeight: 200.0,
+              titleSpacing: 0.0,
+              elevation: 0.0,
+              flexibleSpace: Stack(
+                children: <Widget>[
+                  new Positioned.fill(
+                      child: Image.asset(
+                    canteenImage,
+                    fit: BoxFit.cover,
+                  )),
+                  new Container(
+                    color: Colors.black.withOpacity(.5),
+                    child: new Center(
+                      child: new Text(
+                      canteenName,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 25.0,
+                        fontFamily: "Quicksand",
+                        fontWeight: FontWeight.w100
+                      ),)
+                    )
+                      )
+                ],
+              ),
+            );
+}
+}
 
 class HomePage extends StatelessWidget {
   const HomePage({Key key}) : super(key: key);
@@ -60,7 +101,7 @@ class HomePage extends StatelessWidget {
                 ),
               ),
             ),
-            new SliverList(
+            new SliverList( // -------------------------------------------> Sliver FIX !!
                 delegate: new SliverChildBuilderDelegate(
               (BuildContext context, int index) {
                 return new Container(
@@ -68,7 +109,7 @@ class HomePage extends StatelessWidget {
                       decoration: BoxDecoration(
                         border: Border.all()
                       ),
-                      height: 60.0,
+                      height: 100.0,
                       child: new Center(
                         child: new Text(
                           "select a canteen",
@@ -89,48 +130,14 @@ class HomePage extends StatelessWidget {
               childCount: 1, // howMany
             )),
 // __________________________________________________________________________________________________________________ //
-            new SliverAppBar(
-              pinned: true,
-              // shape: new RoundedRectangleBorder(
-              //    borderRadius: new BorderRadius.circular(40.0)
-              // ),
-              expandedHeight: 200.0,
-              titleSpacing: 0.0,
-              elevation: 0.0,
-              // backgroundColor: Colors.transparent,
-              backgroundColor: Colors.yellow[100].withOpacity(0.9),
-              // backgroundColor: Colors.white10, // ------> transparent appBar
-              // backgroundColor: Colors.yellow[700], // ------> yellow appBar
-              // backgroundColor: Colors.white, // ------> white appBar
-              flexibleSpace: new FlexibleSpaceBar(
-                background: Image.asset(
-                  "assets/images/picsafad.jpg",
-                  fit: BoxFit.cover,
-                ),
-                centerTitle: true,
-                titlePadding: new EdgeInsets.only(top: 10.0),
-                title: new Container(
-                  child: new Text(
-                    "Bunzel Canteen",
-                    style: new TextStyle(
-                        color: Colors.black87, // ------> white text
-                        // color: Colors.yellow[700], // ------> yellow text
-                        // color: Colors.black87,
-                        fontFamily: "Quicksand",
-                        fontSize: 30.0,
-                        fontWeight: FontWeight.w100),
-                  ),
-                  padding: EdgeInsets.only(bottom: 10.0, top: 0.0),
-                ),
-              ),
-            ),
+            new HeaderCanteen(canteenImage: 'assets/images/canteen.jpg', canteenName: "Bunzel Canteen",),
             new SliverGrid(
               gridDelegate: new SliverGridDelegateWithMaxCrossAxisExtent(
                 // ------> size&Positoning
                 maxCrossAxisExtent: 200.0, // overallGridSpaceHeight
                 mainAxisSpacing: 10.0, // betweenRows
                 crossAxisSpacing: 0.0, // betweenColumns
-                childAspectRatio: 2.0, // widthPerMainAxisSpacing
+                childAspectRatio: 1.0, // widthPerMainAxisSpacing
               ),
               delegate: new SliverChildBuilderDelegate(
                 // loopLike
@@ -144,57 +151,10 @@ class HomePage extends StatelessWidget {
                   );
                 },
                 childCount: 10, // howMany
-              ),
-            ),
-            new SliverFixedExtentList( // ------> list
-              itemExtent: 80.0, // itemHeight
-              delegate: new SliverChildBuilderDelegate( // loopLike
-                (BuildContext context, int index) {
-                  return new Container(
-                    alignment: Alignment.center,
-                    color: Colors.lightBlue[100 * (index % 9)],
-                    child: new Text('List Item ${index+1}'),
-                  );
-                },
-                childCount: 3
               ),
             ),
 // __________________________________________________________________________________________________________________ //
-            new SliverAppBar(
-              pinned: true,
-              // shape: new RoundedRectangleBorder(
-              //    borderRadius: new BorderRadius.circular(40.0)
-              // ),
-              expandedHeight: 200.0,
-              titleSpacing: 0.0,
-              elevation: 0.0,
-              // backgroundColor: Colors.transparent,
-              backgroundColor: Colors.yellow[300].withOpacity(0.9),
-              // backgroundColor: Colors.white10, // ------> transparent appBar
-              // backgroundColor: Colors.yellow[700], // ------> yellow appBar
-              // backgroundColor: Colors.white, // ------> white appBar
-              flexibleSpace: new FlexibleSpaceBar(
-                background: Image.asset(
-                  "assets/images/picsafad.jpg",
-                  fit: BoxFit.cover,
-                ),
-                centerTitle: true,
-                titlePadding: new EdgeInsets.only(top: 10.0),
-                title: new Container(
-                  child: new Text(
-                    "SAFAD",
-                    style: new TextStyle(
-                        color: Colors.black87, // ------> white text
-                        // color: Colors.yellow[700], // ------> yellow text
-                        // color: Colors.black87,
-                        fontFamily: "Quicksand",
-                        fontSize: 30.0,
-                        fontWeight: FontWeight.w100),
-                  ),
-                  padding: EdgeInsets.only(bottom: 10.0, top: 0.0),
-                ),
-              ),
-            ),
+           HeaderCanteen(canteenImage: 'assets/images/canteen2.jpg', canteenName: "SMED",),
             new SliverGrid(
               gridDelegate: new SliverGridDelegateWithMaxCrossAxisExtent(
                 // ------> size&Positoning
@@ -215,19 +175,6 @@ class HomePage extends StatelessWidget {
                   );
                 },
                 childCount: 10, // howMany
-              ),
-            ),
-            new SliverFixedExtentList( // ------> list
-              itemExtent: 80.0, // itemHeight
-              delegate: new SliverChildBuilderDelegate( // loopLike
-                (BuildContext context, int index) {
-                  return new Container(
-                    alignment: Alignment.center,
-                    color: Colors.lightBlue[100 * (index % 9)],
-                    child: new Text('List Item ${index+1}'),
-                  );
-                },
-                childCount: 3
               ),
             ),
           ],
