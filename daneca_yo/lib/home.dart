@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+// import './data.dart';
 
 class HeaderCanteen extends StatelessWidget { // ------> for CANTEEN HEADERS
   final String canteenImage;
@@ -34,7 +35,7 @@ class HeaderCanteen extends StatelessWidget { // ------> for CANTEEN HEADERS
                         fontFamily: "Quicksand",
                         fontWeight: FontWeight.w100
                       ),)
-                    )
+                    ),
                       )
                 ],
               ),
@@ -53,7 +54,7 @@ class HomePage extends StatelessWidget {
         // height: 300.0,
         child: new CustomScrollView(
           slivers: <Widget>[
-// // ----------> SliverAppBar
+// // ---------------------------------------------------> SliverAppBar
             new SliverAppBar(
               actions: <Widget>[
                 new IconButton(
@@ -75,7 +76,7 @@ class HomePage extends StatelessWidget {
               titleSpacing: 0.0,
               elevation: 0.0,
               // backgroundColor: Colors.transparent,
-              backgroundColor: Colors.yellow[700].withOpacity(0.96),
+              backgroundColor: Colors.yellow[700].withOpacity(0.76),
               // backgroundColor: Colors.white10, // ------> transparent appBar
               // backgroundColor: Colors.yellow[700], // ------> yellow appBar
               // backgroundColor: Colors.white, // ------> white appBar
@@ -101,7 +102,7 @@ class HomePage extends StatelessWidget {
                 ),
               ),
             ),
-            new SliverList( // -------------------------------------------> Sliver FIX !!
+            new SliverList( // ---------------------------------------------------> Sliver FIX !!
                 delegate: new SliverChildBuilderDelegate(
               (BuildContext context, int index) {
                 return new Container(
@@ -143,6 +144,30 @@ class HomePage extends StatelessWidget {
                 // loopLike
                 (BuildContext context, int index) {
                   return new Container(
+                    // alignment: Alignment.center,
+                    color: Colors.yellow[100 * (index % 9)],
+                    // child: new Text('ello $index'),
+                    // child: Icon(Icons.thumb_down),
+                    child: Image.asset('assets/images/burger.jpg'),
+                  );
+                },
+                childCount: 10, // howMany
+              ),
+            ),
+// __________________________________________________________________________________________________________________ //
+           new HeaderCanteen(canteenImage: 'assets/images/canteen2.jpg', canteenName: "Bunzel Basement",),
+            new SliverGrid(
+              gridDelegate: new SliverGridDelegateWithMaxCrossAxisExtent(
+                // ------> size&Positoning
+                maxCrossAxisExtent: 200.0, // overallGridSpaceHeight
+                mainAxisSpacing: 10.0, // betweenRows
+                crossAxisSpacing: 0.0, // betweenColumns
+                childAspectRatio: 2.0, // widthPerMainAxisSpacing
+              ),
+              delegate: new SliverChildBuilderDelegate(
+                // loopLike
+                (BuildContext context, int index) {
+                  return new Container(
                     alignment: Alignment.center,
                     color: Colors.yellow[100 * (index % 9)],
                     // child: new Text('ello $index'),
@@ -154,7 +179,79 @@ class HomePage extends StatelessWidget {
               ),
             ),
 // __________________________________________________________________________________________________________________ //
-           HeaderCanteen(canteenImage: 'assets/images/canteen2.jpg', canteenName: "SMED",),
+            new HeaderCanteen(canteenImage: 'assets/images/canteen3.jpg', canteenName: "SMED",),
+            new SliverGrid(
+              gridDelegate: new SliverGridDelegateWithMaxCrossAxisExtent(
+                // ------> size&Positoning
+                maxCrossAxisExtent: 200.0, // overallGridSpaceHeight
+                mainAxisSpacing: 10.0, // betweenRows
+                crossAxisSpacing: 0.0, // betweenColumns
+                childAspectRatio: 1.0, // widthPerMainAxisSpacing
+              ),
+              delegate: new SliverChildBuilderDelegate(
+                // loopLike
+                (BuildContext context, int index) {
+                  return new Container(
+                    // alignment: Alignment.center,
+                    color: Colors.yellow[100 * (index % 9)],
+                    // child: new Text('ello $index'),
+                    // child: Icon(Icons.thumb_down),
+                    // child: Image.asset('assets/images/burger.jpg'),
+                  );
+                },
+                childCount: 10, // howMany
+              ),
+            ),
+// __________________________________________________________________________________________________________________ //
+            new HeaderCanteen(canteenImage: 'assets/images/canteen4.jpg', canteenName: "RH",),
+            new SliverGrid(
+              gridDelegate: new SliverGridDelegateWithMaxCrossAxisExtent(
+                // ------> size&Positoning
+                maxCrossAxisExtent: 200.0, // overallGridSpaceHeight
+                mainAxisSpacing: 10.0, // betweenRows
+                crossAxisSpacing: 0.0, // betweenColumns
+                childAspectRatio: 1.0, // widthPerMainAxisSpacing
+              ),
+              delegate: new SliverChildBuilderDelegate(
+                // loopLike
+                (BuildContext context, int index) {
+                  return new Container(
+                    // alignment: Alignment.center,
+                    color: Colors.yellow[100 * (index % 9)],
+                    // child: new Text('ello $index'),
+                    // child: Icon(Icons.thumb_down),
+                    // child: Image.asset('assets/images/burger.jpg'),
+                  );
+                },
+                childCount: 10, // howMany
+              ),
+            ),
+// __________________________________________________________________________________________________________________ //
+           new HeaderCanteen(canteenImage: 'assets/images/canteen2.jpg', canteenName: "SAFAD",),
+            new SliverGrid(
+              gridDelegate: new SliverGridDelegateWithMaxCrossAxisExtent(
+                // ------> size&Positoning
+                maxCrossAxisExtent: 200.0, // overallGridSpaceHeight
+                mainAxisSpacing: 10.0, // betweenRows
+                crossAxisSpacing: 0.0, // betweenColumns
+                childAspectRatio: 2.0, // widthPerMainAxisSpacing
+              ),
+              delegate: new SliverChildBuilderDelegate(
+                // loopLike
+                (BuildContext context, int index) {
+                  return new Container(
+                    alignment: Alignment.center,
+                    color: Colors.yellow[100 * (index % 9)],
+                    // child: new Text('ello $index'),
+                    // child: Icon(Icons.thumb_down),
+                    // child: Image.asset('assets/images/burger.jpg'),
+                  );
+                },
+                childCount: 10, // howMany
+              ),
+            ),
+// __________________________________________________________________________________________________________________ //
+           new HeaderCanteen(canteenImage: 'assets/images/canteen2.jpg', canteenName: "CAFE+",),
             new SliverGrid(
               gridDelegate: new SliverGridDelegateWithMaxCrossAxisExtent(
                 // ------> size&Positoning
